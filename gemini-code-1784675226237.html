@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="htmlRoot">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blox Fruits Grand Bazaar | المتجر الأسطوري</title>
+    <!-- الأيقونات والخطوط -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #030712;
+            --bg-card: #0b1329;
+            --ocean-blue: #023e8a;
+            --bloxtreme: #00b4d8;
+            --gold: #ffb703;
+            --gold-glow: rgba(255, 183, 3, 0.5);
+            --mythic-purple: #7209b7;
+            --text-light: #ffffff;
+            --text-muted: #94a3b8;
+            --radius: 24px;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-light);
+            line-height: 1.8;
+            padding-top: 110px;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(114, 9, 183, 0.15) 0%, transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(0, 180, 216, 0.15) 0%, transparent 45%);
+            background-attachment: fixed;
+        }
+
+        /* --- الهيدر الأسطوري الحماسي --- */
+        header {
+            background: rgba(3, 7, 18, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 15px 5%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 3px solid var(--gold);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+            object-fit: cover;
+            box-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffb703, #ff4d6d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-light);
+            padding: 8px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 13px;
+            transition: var(--transition);
+        }
+
+        .lang-btn:hover {
+            background: var(--bloxtreme);
+            border-color: var(--bloxtreme);
+        }
+
+        .search-box {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-box input {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 10px 18px 10px 40px;
+            border-radius: 30px;
+            color: var(--text-light);
+            font-size: 14px;
+            outline: none;
+            width: 220px;
+            transition: var(--transition);
+        }
+
+        .search-box input:focus {
+            width: 280px;
+            border-color: var(--gold);
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 0 20px var(--gold-glow);
+        }
+
+        .search-box i {
+            position: absolute;
+            right: 15px;
+            color: var(--gold);
+        }
+
+        .btn-main {
+            background: linear-gradient(135deg, var(--gold), #fb8500);
+            color: #000;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 900;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px var(--gold-glow);
+        }
+
+        .btn-main:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 183, 3, 0.7);
+        }
+
+        .user-chip {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 8px 16px;
+            border-radius: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .user-chip:hover {
+            border-color: var(--bloxtreme);
+            background: rgba(0, 180, 216, 0.15);
+        }
+
+        .cart-badge {
+            background: #ff4d6d;
+            color: #fff;
+            font-size: 11px;
+            padding: 2px 7px;
+            border-radius: 50%;
+            font-weight: bold;
+        }
+
+        /* --- واجهة الهيرو (البانر الرسمي المفعم بالحيوية) --- */
+        .hero {
+            background: linear-gradient(rgba(3, 7, 18, 0.6), rgba(3, 7, 18, 0.85)), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1600&auto=format&fit=crop') center/cover;
+            text-align: center;
+            padding: 100px 20px;
+            margin-bottom: 40px;
+            border-bottom: 4px solid var(--bloxtreme);
+            position: relative;
+            box-shadow: inset 0 -30px 40px rgba(3, 7, 18, 0.9);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 15px;
+            color: #fff;
+            text-shadow: 0 0 30px rgba(0, 180, 216, 0.8);
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+            text-shadow: 0 0 30px var(--gold-glow);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* --- محتوى المتجر --- */
+        .container {
+            max-width: 1350px;
+            margin: 0 auto;
+            padding: 0 30px 80px;
+        }
+
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 45px;
+            flex-wrap: wrap;
+        }
+
+        .cat-btn {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 12px 28px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 700;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .cat-btn.active, .cat-btn:hover {
+            background: linear-gradient(135deg, var(--bloxtreme), var(--ocean-blue));
+            color: #fff;
+            border-color: var(--bloxtreme);
+            transform: translateY(-4px);
+            box-shadow: 0 6px 20px rgba(0, 180, 216, 0.5);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-12px);
+            border-color: var(--gold);
+            box-shadow: 0 35px 70px rgba(0,0,0,0.9), 0 0 25px var(--gold-glow);
+        }
+
+        .product-img-box {
+            height: 220px;
+            background: radial-gradient(circle, #1e1b4b 0%, #030712 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-img-box img {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.8));
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-img-box img {
+            transform: scale(1.15) rotate(6deg);
+        }
+
+        .rarity-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.75);
+            border: 1px solid var(--bloxtreme);
+            color: var(--bloxtreme);
+            font-size: 11px;
+            font-weight: 900;
+            padding: 5px 12px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .product-content {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-title {
+            font-size: 20px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .product-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 15px;
+            margin-top: auto;
+        }
+
+        .product-price {
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold);
+        }
+
+        .buy-btn {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px 18px;
+            border-radius: 14px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .buy-btn:hover {
+            background: var(--gold);
+            color: #000;
+            border-color: var(--gold);
+            box-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        /* --- السلة الجانبية والنوافذ المنبثقة --- */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 1200;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .drawer {
+            position: fixed;
+            top: 0;
+            right: -450px;
+            width: 420px;
+            height: 100%;
+            background: var(--bg-card);
+            z-index: 1300;
+            box-shadow: -20px 0 50px rgba(0,0,0,0.9);
+            transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            border-left: 2px solid var(--gold);
+        }
+
+        body[dir="ltr"] .drawer {
+            right: auto;
+            left: -450px;
+            border-left: none;
+            border-right: 2px solid var(--gold);
+            transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .drawer.active {
+            right: 0;
+        }
+
+        body[dir="ltr"] .drawer.active {
+            left: 0;
+            right: auto;
+        }
+
+        .drawer-header {
+            padding: 22px;
+            background: var(--bg-deep);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid rgba(255, 183, 3, 0.2);
+        }
+
+        .drawer-header h3 {
+            color: var(--gold);
+            font-size: 18px;
+            font-weight: 900;
+        }
+
+        .close-icon {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .drawer-body {
+            padding: 20px;
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .cart-item-img {
+            width: 55px;
+            height: 55px;
+            background: #111827;
+            border-radius: 12px;
+            object-fit: contain;
+            padding: 5px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .cart-item-details {
+            flex-grow: 1;
+        }
+
+        .cart-item-title {
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        .cart-item-price {
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .qty-ctrl {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 5px;
+        }
+
+        .qty-ctrl button {
+            background: rgba(255,255,255,0.12);
+            border: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            color: #fff;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .del-btn {
+            background: none;
+            border: none;
+            color: #ff4d6d;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .drawer-footer {
+            padding: 20px;
+            background: var(--bg-deep);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 18px;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .btn-full {
+            width: 100%;
+            background: linear-gradient(135deg, var(--gold), #fb8500);
+            color: #000;
+            border: none;
+            padding: 15px;
+            border-radius: 14px;
+            font-weight: 900;
+            font-size: 16px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px var(--gold-glow);
+        }
+
+        .btn-full:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 183, 3, 0.7);
+        }
+
+        /* --- النوافذ المنبثقة Modal --- */
+        .modal-box {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            background: var(--bg-card);
+            width: 90%;
+            max-width: 460px;
+            border-radius: var(--radius);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.9);
+            z-index: 1400;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            border: 2px solid var(--gold);
+            overflow: hidden;
+        }
+
+        .overlay.active .modal-box.show-modal {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-body-content {
+            padding: 25px;
+            max-height: 75vh;
+            overflow-y: auto;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 800;
+            margin-bottom: 6px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            color: #fff;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .form-group input:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        .pay-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .pay-card {
+            border: 2px solid rgba(255,255,255,0.12);
+            border-radius: 12px;
+            padding: 12px 5px;
+            text-align: center;
+            cursor: pointer;
+            background: rgba(255,255,255,0.03);
+            transition: var(--transition);
+        }
+
+        .pay-card i {
+            font-size: 22px;
+            color: var(--gold);
+            margin-bottom: 5px;
+        }
+
+        .pay-card span {
+            display: block;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .pay-card.active {
+            border-color: var(--gold);
+            background: rgba(255, 183, 3, 0.12);
+            box-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        .auth-switch-text {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .auth-switch-text span {
+            color: var(--gold);
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        /* --- إشعارات Toast --- */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: var(--bg-deep);
+            color: #fff;
+            padding: 15px 25px;
+            border-radius: 14px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.8);
+            z-index: 1500;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transform: translateY(120px);
+            opacity: 0;
+            transition: var(--transition);
+            border: 1px solid var(--gold);
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        footer {
+            background: var(--bg-deep);
+            text-align: center;
+            padding: 30px;
+            font-size: 13px;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        @media (max-width: 768px) {
+            .search-box { display: none; }
+            .drawer { width: 100%; right: -100%; }
+            body[dir="ltr"] .drawer { left: -100%; }
+            .hero h1 { font-size: 32px; }
+            .pay-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر -->
+    <header>
+        <div class="logo-box">
+            <!-- شعار رسمي للعبة (أيقونة قرصان مستوحاة من بلوكس فروت) -->
+            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=200&auto=format&fit=crop" alt="Blox Fruits Logo" class="logo-img">
+            <span class="logo-text" id="logoText">Blox Bazaar</span>
+        </div>
+        <div class="header-actions">
+            <button class="lang-btn" onclick="toggleLanguage()" id="langToggleBtn">English 🌐</button>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="ابحث عن فاكهة، سيف..." onkeyup="filterProducts()">
+                <i class="fas fa-search"></i>
+            </div>
+            <div id="userAccountSection">
+                <button class="user-chip" onclick="openAuthModal('login')">
+                    <i class="fas fa-user-circle" style="color: var(--gold); font-size: 16px;"></i>
+                    <span id="userNameDisplay">تسجيل الدخول</span>
+                </button>
+            </div>
+            <button class="btn-main" onclick="toggleCart()">
+                <i class="fas fa-shopping-bag"></i> <span id="cartBtnText">الحقيبة</span>
+                <span class="cart-badge" id="cartCount">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- الهيرو (البانر الرسمي المفعم بالحيوية) -->
+    <section class="hero">
+        <h1 id="heroTitle">متجر فواكه وبحار <span>Blox Fruits الأسطوري</span></h1>
+        <p id="heroDesc">استمتع بأقوى فواكه الشيطان الأسطورية (Mythical)، السيوف الخارقة، وتعزيزات الخبرة بأسعار مميزة بالريال السعودي مع تسليم فوري وآمن داخل اللعبة!</p>
+    </section>
+
+    <!-- محتوى المنتجات -->
+    <div class="container">
+        <div class="categories">
+            <button class="cat-btn active" onclick="filterCategory('all', this)" id="catAll">كل العناصر</button>
+            <button class="cat-btn" onclick="filterCategory('fruit', this)" id="catFruit">فواكه الشيطان 🍎</button>
+            <button class="cat-btn" onclick="filterCategory('sword', this)" id="catSword">السيوف الأسطورية ⚔️</button>
+            <button class="cat-btn" onclick="filterCategory('boost', this)" id="catBoost">تعزيزات الخبرة ⚡</button>
+        </div>
+
+        <div class="products-grid" id="productsGrid"></div>
+    </div>
+
+    <!-- السلة الجانبية -->
+    <div class="overlay" id="mainOverlay" onclick="closeEverything()"></div>
+    <div class="drawer" id="cartDrawer">
+        <div class="drawer-header">
+            <h3 id="cartHeaderTitle"><i class="fas fa-shopping-bag"></i> حقيبة المشتريات</h3>
+            <button class="close-icon" onclick="toggleCart()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="drawer-body" id="cartItemsList">
+            <div style="text-align: center; color: var(--text-muted); margin-top: 60px;">
+                <i class="fas fa-box-open" style="font-size: 50px; margin-bottom: 12px; opacity: 0.3;"></i>
+                <p id="emptyCartText">الحقيبة فارغة حالياً</p>
+            </div>
+        </div>
+        <div class="drawer-footer">
+            <div class="total-row">
+                <span id="totalLabel">المجموع الكلي:</span>
+                <span id="cartTotal" style="color: var(--gold);">0 ر.س</span>
+            </div>
+            <button class="btn-full" onclick="proceedToCheckout()" id="checkoutBtnText">متابعة لإتمام الطلب الآمن</button>
+        </div>
+    </div>
+
+    <!-- نافذة تسجيل الدخول -->
+    <div class="modal-box" id="authModal">
+        <div class="drawer-header">
+            <h3 id="authModalTitle"><i class="fas fa-user-lock"></i> ربط حساب روبلوكس</h3>
+            <button class="close-icon" onclick="closeAuthModal()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body-content">
+            <form onsubmit="handleAuth(event)">
+                <div class="form-group" id="regNameGroup" style="display: none;">
+                    <label id="labelRobloxName">اسم اللاعب في روبلوكس (Roblox Username)</label>
+                    <input type="text" id="regName" placeholder="مثال: zKing_Blox">
+                </div>
+                <div class="form-group">
+                    <label id="labelEmail">البريد الإلكتروني أو اسم المستخدم</label>
+                    <input type="text" id="authEmail" required placeholder="name@roblox.com">
+                </div>
+                <div class="form-group">
+                    <label id="labelPass">كلمة المرور السرية</label>
+                    <input type="password" id="authPass" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn-full" id="authSubmitBtn">تسجيل الدخول</button>
+            </form>
+            <div class="auth-switch-text" id="authSwitch">
+                ليس لديك حساب؟ <span onclick="toggleAuthMode()">إنشاء حساب جديد</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة الدفع بالريال -->
+    <div class="modal-box" id="checkoutModal">
+        <div class="drawer-header">
+            <h3 id="checkoutModalTitle"><i class="fas fa-shield-alt"></i> الدفع بالريال واستلام العناصر</h3>
+            <button class="close-icon" onclick="closeCheckoutModal()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body-content">
+            <form onsubmit="submitOrderFinal(event)">
+                <div class="form-group">
+                    <label id="labelNickServer">اسمك داخل سيرفر بلوكس فروت (In-game Roblox Nickname)</label>
+                    <input type="text" id="robloxNick" required placeholder="أدخل اسمك بدقة لتسليم الفاكهة/السيف">
+                </div>
+                
+                <div class="form-group">
+                    <label id="labelPayMethod">اختر طريقة الدفع</label>
+                    <div class="pay-grid">
+                        <div class="pay-card active" onclick="setPayMethod('mada', this)">
+                            <i class="fas fa-credit-card"></i>
+                            <span>مدى Mada</span>
+                        </div>
+                        <div class="pay-card" onclick="setPayMethod('apple', this)">
+                            <i class="fab fa-apple-pay"></i>
+                            <span>Apple Pay</span>
+                        </div>
+                        <div class="pay-card" onclick="setPayMethod('visa', this)">
+                            <i class="fas fa-wallet"></i>
+                            <span>بطاقة بنكية Visa</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-full" id="confirmOrderBtn">تأكيد طلب التوصيل الفوري</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- إشعار Toast -->
+    <div class="toast" id="toastBox">
+        <i class="fas fa-check-circle" style="color: var(--gold); font-size: 22px;"></i>
+        <span id="toastMsg">تمت العملية بنجاح</span>
+    </div>
+
+    <!-- الفوتر -->
+    <footer>
+        <p id="footerText">Blox Fruits Grand Bazaar &copy; 2026 - غير مرتبطة رسمياً بشركة Roblox Corporation</p>
+    </footer>
+
+    <!-- المنطق البرمجي واللغات -->
+    <script>
+        const products = [
+            { 
+                id: 1, 
+                nameAr: "فاكهة التنين الأسطورية (Dragon)", 
+                nameEn: "Mythical Dragon Fruit", 
+                category: "fruit", 
+                price: 145, 
+                descAr: "أقوى فاكهة تحول أسطورية بضرر مدمر ورهيب في الحروب.", 
+                descEn: "The ultimate transformation mythic fruit with destructive power.", 
+                image: "https://images.unsplash.com/photo-1528825871115-3581a5387919?q=80&w=300&auto=format&fit=crop", 
+                rarityAr: "أُسطوري Mythic", 
+                rarityEn: "Mythic" 
+            },
+            { 
+                id: 2, 
+                nameAr: "فاكهة النمر السريعة (Leopard)", 
+                nameEn: "Leopard Fruit", 
+                category: "fruit", 
+                price: 125, 
+                descAr: "سرعة حركة مرعبة ومجموعات هجمات اشتباك خاطفة.", 
+                descEn: "Terrifying movement speed and lightning-fast combo attacks.", 
+                image: "https://images.unsplash.com/photo-1534188753412-3e26d1d618d3?q=80&w=300&auto=format&fit=crop", 
+                rarityAr: "أُسطوري Mythic", 
+                rarityEn: "Mythic" 
+            },
+            { 
+                id: 3, 
+                nameAr: "فاكهة البوذا الواسعة (Buddha)", 
+                nameEn: "Buddha Fruit", 
+                category: "fruit", 
+                price: 75, 
+                descAr: "الخيار الأول والأفضل لتطوير الليفل (Grinding) بمدى هجوم واسع.", 
+                descEn: "The absolute best choice for grinding and defensive range.", 
+                image: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?q=80&w=300&auto=format&fit=crop", 
+                rarityAr: "أسطوري Legendary", 
+                rarityEn: "Legendary" 
+            },
+            { 
+                id: 4, 
+                nameAr: "سيف كاتانا المزدوج (CDK)", 
+                nameEn: "Cursed Dual Katana", 
+                category: "sword", 
+                price: 110, 
+                descAr: "السيوف الأقوى والأكثر مرعباً في اللعبة بضربات قاطعة.", 
+                descEn: "The strongest and most terrifying dual swords in the game.", 
+                image: "https://images.unsplash.com/photo-1589241062272-c0a000071dfa?q=80&w=300&auto=format&fit=crop", 
+                rarityAr: "نادر جداً", 
+                rarityEn: "Ultra Rare" 
+            },
+            { 
+                id: 5, 
+                nameAr: "سيف دارك بليد (Dark Blade)", 
+                nameEn: "Dark Blade", 
+                category: "sword", 
+                price: 95, 
+                descAr: "السيف الأسطوري المضيء بتصميم قراصنة فريد.", 
+                descEn: "The legendary glowing sword with a unique pirate design.", 
+                image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?q=80&w=300&auto=format&fit=crop", 
+                rarityAr: "أسطوري Legendary", 
+                rarityEn: "Legendary" 
+            },
+            { 
+                id: 6, 
+                nameAr: "تعزيز خبرة 2x (أسبوع كامل)", 
+                nameEn: "2x XP Boost (1 Week)", 
+                category: "boost", 
+                price: 35, 
+                descAr: "ضاعف سرعة ليفلك ومكاسب الـ Mastery بشكل صاروخي.", 
+                descEn: "Double your level speed and mastery gains instantly.", 
+                image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=300&auto=format&fit=crop", 
+                rarityAr: "دائم Permanent", 
+                rarityEn: "Permanent" 
+            }
+        ];
+
+        let currentLang = 'ar';
+        let cart = [];
+        let currentCategory = 'all';
+        let currentUser = null;
+        let isRegister = false;
+        let selectedPay = 'mada';
+        let pendingCheckout = false;
+
+        const translations = {
+            ar: {
+                logoText: "Blox Bazaar",
+                langToggleBtn: "English 🌐",
+                cartBtnText: "الحقيبة",
+                heroTitle: "متجر فواكه وبحار <span>Blox Fruits الأسطوري</span>",
+                heroDesc: "استمتع بأقوى فواكه الشيطان الأسطورية (Mythical)، السيوف الخارقة، وتعزيزات الخبرة بأسعار مميزة بالريال السعودي مع تسليم فوري وآمن داخل اللعبة!",
+                catAll: "كل العناصر",
+                catFruit: "فواكه الشيطان 🍎",
+                catSword: "السيوف الأسطورية ⚔️",
+                catBoost: "تعزيزات الخبرة ⚡",
+                searchPlaceholder: "ابحث عن فاكهة، سيف...",
+                loginText: "تسجيل الدخول",
+                cartHeaderTitle: "حقيبة المشتريات",
+                emptyCartText: "الحقيبة فارغة حالياً",
+                totalLabel: "المجموع الكلي:",
+                checkoutBtnText: "متابعة لإتمام الطلب الآمن",
+                authModalTitle: "ربط حساب روبلوكس",
+                labelRobloxName: "اسم اللاعب في روبلوكس (Roblox Username)",
+                labelEmail: "البريد الإلكتروني أو اسم المستخدم",
+                labelPass: "كلمة المرور السرية",
+                authSubmitBtn: "تسجيل الدخول",
+                authSwitchLogin: "لديك حساب بالفعل؟ <span>تسجيل الدخول</span>",
+                authSwitchReg: "ليس لديك حساب؟ <span>إنشاء حساب جديد</span>",
+                checkoutModalTitle: "الدفع بالريال واستلام العناصر",
+                labelNickServer: "اسمك داخل سيرفر بلوكس فروت (In-game Roblox Nickname)",
+                labelPayMethod: "اختر طريقة الدفع",
+                confirmOrderBtn: "تأكيد طلب التوصيل الفوري بالريال",
+                footerText: "Blox Fruits Grand Bazaar &copy; 2026 - غير مرتبطة رسمياً بشركة Roblox Corporation",
+                addToCart: "أضف للسلة"
+            },
+            en: {
+                logoText: "Blox Bazaar",
+                langToggleBtn: "العربية 🌐",
+                cartBtnText: "Cart",
+                heroTitle: "Legendary <span>Blox Fruits</span> Marketplace",
+                heroDesc: "Get the strongest Mythical devil fruits, ultimate swords, and XP boosts with SAR currency and instant in-game secure delivery!",
+                catAll: "All Items",
+                catFruit: "Devil Fruits 🍎",
+                catSword: "Legendary Swords ⚔️",
+                catBoost: "XP Boosts ⚡",
+                searchPlaceholder: "Search fruit, sword...",
+                loginText: "Sign In",
+                cartHeaderTitle: "Shopping Cart",
+                emptyCartText: "Your cart is empty",
+                totalLabel: "Total Amount:",
+                checkoutBtnText: "Proceed to Secure Checkout",
+                authModalTitle: "Link Roblox Account",
+                labelRobloxName: "Roblox Username",
+                labelEmail: "Email or Username",
+                labelPass: "Password",
+                authSubmitBtn: "Sign In",
+                authSwitchLogin: "Already have an account? <span>Sign In</span>",
+                authSwitchReg: "Don't have an account? <span>Create Account</span>",
+                checkoutModalTitle: "Pay in SAR & Get Items",
+                labelNickServer: "In-game Roblox Nickname",
+                labelPayMethod: "Select Payment Method",
+                confirmOrderBtn: "Confirm Instant Delivery Order",
+                footerText: "Blox Fruits Grand Bazaar &copy; 2026 - Not officially affiliated with Roblox Corporation",
+                addToCart: "Add to Cart"
+            }
+        };
+
+        window.addEventListener('DOMContentLoaded', () => renderProducts(products));
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            const root = document.getElementById('htmlRoot');
+            root.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+            root.setAttribute('lang', currentLang);
+            updateUITexts();
+            renderProducts(products);
+            updateCartUI();
+        }
+
+        function updateUITexts() {
+            const t = translations[currentLang];
+            document.getElementById('logoText').textContent = t.logoText;
+            document.getElementById('langToggleBtn').textContent = t.langToggleBtn;
+            document.getElementById('cartBtnText').textContent = t.cartBtnText;
+            document.getElementById('heroTitle').innerHTML = t.heroTitle;
+            document.getElementById('heroDesc').textContent = t.heroDesc;
+            document.getElementById('catAll').textContent = t.catAll;
+            document.getElementById('catFruit').textContent = t.catFruit;
+            document.getElementById('catSword').textContent = t.catSword;
+            document.getElementById('catBoost').textContent = t.catBoost;
+            document.getElementById('searchInput').placeholder = t.searchPlaceholder;
+            if(!currentUser) document.getElementById('userNameDisplay').textContent = t.loginText;
+            document.getElementById('cartHeaderTitle').innerHTML = `<i class="fas fa-shopping-bag"></i> ${t.cartHeaderTitle}`;
+            document.getElementById('emptyCartText').textContent = t.emptyCartText;
+            document.getElementById('totalLabel').textContent = t.totalLabel;
+            document.getElementById('checkoutBtnText').textContent = t.checkoutBtnText;
+            document.getElementById('authModalTitle').innerHTML = `<i class="fas fa-user-lock"></i> ${t.authModalTitle}`;
+            document.getElementById('labelRobloxName').textContent = t.labelRobloxName;
+            document.getElementById('labelEmail').textContent = t.labelEmail;
+            document.getElementById('labelPass').textContent = t.labelPass;
+            document.getElementById('authSubmitBtn').textContent = t.authSubmitBtn;
+            document.getElementById('checkoutModalTitle').innerHTML = `<i class="fas fa-shield-alt"></i> ${t.checkoutModalTitle}`;
+            document.getElementById('labelNickServer').textContent = t.labelNickServer;
+            document.getElementById('labelPayMethod').textContent = t.labelPayMethod;
+            document.getElementById('confirmOrderBtn').textContent = t.confirmOrderBtn;
+            document.getElementById('footerText').innerHTML = t.footerText;
+        }
+
+        function renderProducts(items) {
+            const grid = document.getElementById('productsGrid');
+            const t = translations[currentLang];
+            if (items.length === 0) {
+                grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 50px; color: var(--text-muted);">${currentLang==='ar'?'عذراً، لم يتم العثور على العنصر المطلوب':'No items found'}</div>`;
+                return;
+            }
+            grid.innerHTML = items.map(p => {
+                const name = currentLang === 'ar' ? p.nameAr : p.nameEn;
+                const desc = currentLang === 'ar' ? p.descAr : p.descEn;
+                const rarity = currentLang === 'ar' ? p.rarityAr : p.rarityEn;
+                return `
+                    <div class="product-card">
+                        <div class="product-img-box">
+                            <span class="rarity-tag">${rarity}</span>
+                            <img src="${p.image}" alt="${name}">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">${name}</h3>
+                            <p class="product-desc">${desc}</p>
+                            <div class="product-footer">
+                                <span class="product-price">${p.price} ${currentLang==='ar'?'ر.س':'SAR'}</span>
+                                <button class="buy-btn" onclick="addToCart(${p.id})">${t.addToCart}</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function filterCategory(cat, btn) {
+            currentCategory = cat;
+            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            applySearch();
+        }
+
+        function filterProducts() {
+            applySearch();
+        }
+
+        function applySearch() {
+            const q = document.getElementById('searchInput').value.toLowerCase();
+            let res = products;
+            if (currentCategory !== 'all') res = res.filter(p => p.category === currentCategory);
+            if (q.trim() !== '') {
+                res = res.filter(p => p.nameAr.toLowerCase().includes(q) || p.nameEn.toLowerCase().includes(q) || p.descAr.toLowerCase().includes(q));
+            }
+            renderProducts(res);
+        }
+
+        function toggleCart() {
+            const drawer = document.getElementById('cartDrawer');
+            const overlay = document.getElementById('mainOverlay');
+            drawer.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        function closeEverything() {
+            document.getElementById('cartDrawer').classList.remove('active');
+            document.getElementById('authModal').classList.remove('show-modal');
+            document.getElementById('checkoutModal').classList.remove('show-modal');
+            document.getElementById('mainOverlay').classList.remove('active');
+        }
+
+        function addToCart(id) {
+            const item = products.find(p => p.id === id);
+            const exist = cart.find(i => i.id === id);
+            if (exist) exist.qty++;
+            else cart.push({ ...item, qty: 1 });
+            updateCartUI();
+            showToast(currentLang === 'ar' ? `تمت إضافة "${item.nameAr}" للحقيبة` : `Added "${item.nameEn}" to cart`);
+        }
+
+        function changeQty(id, delta) {
+            const item = cart.find(i => i.id === id);
+            if (item) {
+                item.qty += delta;
+                if (item.qty <= 0) cart = cart.filter(i => i.id !== id);
+            }
+            updateCartUI();
+        }
+
+        function removeItem(id) {
+            cart = cart.filter(i => i.id !== id);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const list = document.getElementById('cartItemsList');
+            const count = document.getElementById('cartCount');
+            const totalEl = document.getElementById('cartTotal');
+            const t = translations[currentLang];
+
+            count.textContent = cart.reduce((s, i) => s + i.qty, 0);
+
+            if (cart.length === 0) {
+                list.innerHTML = `
+                    <div style="text-align: center; color: var(--text-muted); margin-top: 60px;">
+                        <i class="fas fa-box-open" style="font-size: 50px; margin-bottom: 12px; opacity: 0.3;"></i>
+                        <p>${t.emptyCartText}</p>
+                    </div>`;
+                totalEl.textContent = `0 ${currentLang==='ar'?'ر.س':'SAR'}`;
+                return;
+            }
+
+            let total = 0;
+            list.innerHTML = cart.map(i => {
+                total += i.price * i.qty;
+                const name = currentLang === 'ar' ? i.nameAr : i.nameEn;
+                return `
+                    <div class="cart-item">
+                        <img src="${i.image}" class="cart-item-img" alt="${name}">
+                        <div class="cart-item-details">
+                            <div class="cart-item-title">${name}</div>
+                            <div class="cart-item-price">${i.price * i.qty} ${currentLang==='ar'?'ر.س':'SAR'}</div>
+                            <div class="qty-ctrl">
+                                <button onclick="changeQty(${i.id}, -1)">-</button>
+                                <span>${i.qty}</span>
+                                <button onclick="changeQty(${i.id}, 1)">+</button>
+                            </div>
+                        </div>
+                        <button class="del-btn" onclick="removeItem(${i.id})"><i class="fas fa-trash-alt"></i></button>
+                    </div>`;
+            }).join('');
+            totalEl.textContent = `${total} ${currentLang==='ar'?'ر.س':'SAR'}`;
+        }
+
+        function openAuthModal(mode) {
+            isRegister = (mode === 'register');
+            updateAuthUI();
+            closeEverything();
+            document.getElementById('mainOverlay').classList.add('active');
+            document.getElementById('authModal').classList.add('show-modal');
+        }
+
+        function closeAuthModal() {
+            document.getElementById('authModal').classList.remove('show-modal');
+            document.getElementById('mainOverlay').classList.remove('active');
+        }
+
+        function toggleAuthMode() {
+            isRegister = !isRegister;
+            updateAuthUI();
+        }
+
+        function updateAuthUI() {
+            const title = document.getElementById('authModalTitle');
+            const group = document.getElementById('regNameGroup');
+            const btn = document.getElementById('authSubmitBtn');
+            const sw = document.getElementById('authSwitch');
+            const t = translations[currentLang];
+
+            if (isRegister) {
+                title.innerHTML = `<i class="fas fa-user-plus"></i> ${currentLang==='ar'?'إنشاء حساب جديد':'Create New Account'}`;
+                group.style.display = 'block';
+                btn.textContent = currentLang==='ar'?'إنشاء الحساب الآن':'Create Account Now';
+                sw.innerHTML = t.authSwitchLogin;
+            } else {
+                title.innerHTML = `<i class="fas fa-user-lock"></i> ${t.authModalTitle}`;
+                group.style.display = 'none';
+                btn.textContent = t.authSubmitBtn;
+                sw.innerHTML = t.authSwitchReg;
+            }
+        }
+
+        function handleAuth(e) {
+            e.preventDefault();
+            const email = document.getElementById('authEmail').value;
+            let name = email.split('@')[0];
+            if (isRegister) {
+                const custom = document.getElementById('regName').value;
+                if (custom) name = custom;
+            }
+
+            currentUser = { name };
+            document.getElementById('userNameDisplay').textContent = currentUser.name;
+            closeEverything();
+            showToast(currentLang === 'ar' ? `أهلاً بك يا ${currentUser.name}! تم الربط بنجاح` : `Welcome ${currentUser.name}! Linked successfully`);
+
+            if (pendingCheckout) {
+                pendingCheckout = false;
+                openCheckoutModal();
+            }
+        }
+
+        function proceedToCheckout() {
+            if (cart.length === 0) {
+                alert(currentLang === 'ar' ? 'الحقيبة فارغة' : 'Cart is empty');
+                return;
+            }
+            toggleCart();
+
+            if (!currentUser) {
+                pendingCheckout = true;
+                showToast(currentLang === 'ar' ? 'يجب تسجيل الدخول بحساب روبلوكس أولاً' : 'Please sign in first');
+                openAuthModal('login');
+                return;
+            }
+
+            openCheckoutModal();
+        }
+
+        function openCheckoutModal() {
+            closeEverything();
+            document.getElementById('mainOverlay').classList.add('active');
+            document.getElementById('checkoutModal').classList.add('show-modal');
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById('checkoutModal').classList.remove('show-modal');
+            document.getElementById('mainOverlay').classList.remove('active');
+        }
+
+        function setPayMethod(method, el) {
+            selectedPay = method;
+            document.querySelectorAll('.pay-card').forEach(c => c.classList.remove('active'));
+            el.classList.add('active');
+        }
+
+        function submitOrderFinal(e) {
+            e.preventDefault();
+            const nick = document.getElementById('robloxNick').value;
+            closeEverything();
+            cart = [];
+            updateCartUI();
+            showToast(currentLang === 'ar' ? `تم استلام طلبك بنجاح للاعب (${nick}) سيتم تسليم العناصر بالريال!` : `Order placed successfully for (${nick})!`);
+        }
+
+        function showToast(msg) {
+            const t = document.getElementById('toastBox');
+            document.getElementById('toastMsg').textContent = msg;
+            t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 3800);
+        }
+    </script>
+</body>
+</html>
